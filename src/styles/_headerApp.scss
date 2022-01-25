@@ -1,0 +1,30 @@
+@use '@/styles/_global.scss' as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 327px;
+  margin: 31px auto;
+
+  &__title {
+    font-size: $font-extra-large;
+    font-weight: bold;
+    color: $logo-color;
+
+    body.dark &{
+      color: $font-color-light;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    width: 573px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header {
+    width: 730px;
+  }
+}

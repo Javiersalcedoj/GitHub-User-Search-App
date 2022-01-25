@@ -1,0 +1,138 @@
+@use '@/styles/_global.scss' as *;
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  width: 327px;
+  margin: 0 auto;
+  border-radius: 16px;
+  background: $secondary-background-light;
+  box-shadow: 0px 16px 30px -10px rgba(70, 95, 187, 0.098); //--
+
+  &:hover {
+    box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
+  }
+  
+  body.dark &{
+    background: $secondary-background-dark;
+  }
+
+  &__container{
+    display:flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__icon {
+    width: 21px;
+    height: 20px;
+    margin: 0px 9px 0px 16px;
+    background-image: url('../assets/icon-search.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__input {
+    height: 25px;
+    width: calc(100% - 45px);
+    border: none;
+    font-family: $font-family;
+    font-weight: 400;
+    font-size: $font-regular;
+    color: $logo-color;
+    caret-color: $primary-color;
+
+    body.dark &{
+      background: $secondary-background-dark;
+      color: $font-color-light;
+    }
+
+    div.searchBar__container.error & {
+      width: calc(100% - 120px);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      font-family: $font-family;
+      font-size: $font-regular;
+      font-weight: 400;
+      color: $font-color-primary;
+
+      body.dark &{
+        color: $font-color-light;
+      }
+    }
+  }
+
+  &__error {
+    font-size: $font-regular;
+    color: $error-color;
+    background: $secondary-background-light;
+
+    body.dark &{
+      background: $secondary-background-dark;
+    }
+  }
+
+  &__button {
+    width: 84px;
+    height: 46px;
+    margin: 0px 7px;
+    border: none;
+    font-family: $font-family;
+    font-size: $font-regular;
+    font-weight: bold;
+    color: $font-color-light;
+    border-radius: 10px;
+    background: $primary-color;
+
+    &:hover {
+      background: $button-active-color;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .searchBar {
+    width: 573px;
+    height: 69px;
+
+    &__icon {
+      width: 25px;
+      height: 24px;
+      margin: 0px 32px 0px 23px;
+    }
+
+    &__input {
+      width: calc(100% - 80px);
+      font-size: $font-middle-big;
+
+      div.searchBar__container.error & {
+        width: calc(100% - 152px);
+      }
+
+      &::placeholder {
+        font-size: $font-middle-big;
+      }
+    }
+
+    &__button {
+      width: 106px;
+      height: 50px;
+      margin: 0px 10px;
+      font-size: $font-big;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .searchBar {
+    width: 730px;
+  }
+}
