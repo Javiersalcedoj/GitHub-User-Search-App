@@ -22,8 +22,8 @@ This app allows you to consult relevant information from Github users through th
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Project Repository: [https://github.com/Javiersalcedoj/GitHub-User-Search-App](https://github.com/Javiersalcedoj/GitHub-User-Search-App)
+- Live Site URL: [https://githubsersearchapp.netlify.app/](https://githubsersearchapp.netlify.app/)
 
 ## My process
 
