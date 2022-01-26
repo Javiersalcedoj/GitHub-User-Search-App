@@ -11,8 +11,8 @@
 <script>
 export default {
   name: "IconCompany",
-}
+};
 </script>
 <style lang="scss" scoped>
-  @use "@/styles/_iconInformation.scss"
+@use "@/styles/_iconInformation.scss";
 </style>

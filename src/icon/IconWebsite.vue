@@ -13,9 +13,9 @@
 
 <script>
 export default {
-  name:"IconWebsite",
-}
+  name: "IconWebsite",
+};
 </script>
 <style lang="scss" scoped>
-  @use "@/styles/_iconInformation.scss"
+@use "@/styles/_iconInformation.scss";
 </style>

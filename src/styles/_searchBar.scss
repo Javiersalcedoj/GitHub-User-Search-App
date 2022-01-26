@@ -72,6 +72,7 @@
 
   &__error {
     font-size: $font-regular;
+    font-weight: 700;
     color: $error-color;
     background: $secondary-background-light;
 
@@ -114,7 +115,7 @@
       font-size: $font-middle-big;
 
       div.searchBar__container.error & {
-        width: calc(100% - 152px);
+        width: calc(100% - 163px);
       }
 
       &::placeholder {
@@ -134,5 +135,8 @@
 @media (min-width: 1024px) {
   .searchBar {
     width: 730px;
+    &__error {
+      font-size: $font-middle-regular;
+    };
   }
 }

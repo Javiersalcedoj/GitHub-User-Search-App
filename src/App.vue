@@ -1,13 +1,11 @@
 <template>
   <div id="app">
     <header-app>
-      <ButtonMode 
-        @changeModel="toggleDarkMode" :darkMode="darkMode"
-      />
+      <ButtonMode @changeModel="toggleDarkMode" :darkMode="darkMode" />
     </header-app>
     <main>
-      <SearchBar @dataUser="dataUserArray"/>
-      <CardInformation :data="dataUser"/>
+      <SearchBar @dataUser="dataUserArray" />
+      <CardInformation :data="dataUser" />
     </main>
   </div>
 </template>
@@ -28,66 +26,67 @@ export default {
     CardInformation,
   },
 
-  data(){
+  data() {
     return {
       darkMode: false,
       dataUser: {},
-    }
+    };
   },
-  created(){
-    this.darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-  },
+
   watch: {
-    darkMode(newValue){
-      console.log('cambio')
-      if(newValue){
+    darkMode(newValue) {
+      if (newValue) {
         document.body.classList.add("dark");
       } else {
         document.body.classList.remove("dark");
       }
-    }
+    },
   },
+
+  created() {
+    this.darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  },
+
   methods: {
     toggleDarkMode() {
       this.darkMode = !this.darkMode;
     },
 
     dataUserArray(dataUser) {
-      this.dataUser =  dataUser
+      this.dataUser = dataUser;
     },
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss">
-  @use "@/styles/_global.scss" as *;
+@use "@/styles/_global.scss" as *;
 
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  html {
-    font-family: $font-family;
-    font-size: 62.5%;
-  }
+html {
+  font-family: $font-family;
+  font-size: 62.5%;
+}
 
+body {
+  background-color: $primary-background-light;
+  transition: 0.3s ease all;
+}
+.dark {
+  background-color: $primary-background-dark;
+}
+
+@media (min-width: 768px) {
   body {
-    background-color: $primary-background-light;
-    transition: 0.3s ease all;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
   }
-  .dark {
-    background-color: $primary-background-dark;
-  }
-
-  @media (min-width: 768px) {
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-height: 100vh ;
-    }
-  }
-
+}
 </style>
