@@ -1,0 +1,38 @@
+@use '@/styles/_global.scss' as *;
+
+.buttonMode {
+  display: flex;
+  align-items: center;
+  width: 84px;
+  height: 40px;
+  font-family: $font-family;
+  font-size: $font-regular;
+  font-weight: bold;
+  letter-spacing: 2.5px;
+  color: $font-color-primary;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  body.dark &{
+    color: $font-color-light;
+  }
+
+  &:hover {
+    color: $logo-color;
+
+    body.dark &{
+      color: $font-color-primary;
+    }
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 16px;
+
+    body.dark &{
+      margin-left: 7px;
+    }
+  }
+}

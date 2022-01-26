@@ -1,0 +1,13 @@
+@use '@/styles/_global.scss' as *;
+
+svg {
+  body.dark & {
+    g {
+      fill: $font-color-light;
+    }
+  
+    path {
+      fill: $font-color-light;
+    }
+  }
+}

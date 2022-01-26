@@ -11,3 +11,6 @@ export default {
   name: 'IconLocation',
 }
 </script>
+<style lang="scss" scoped>
+  @use "@/styles/_iconInformation.scss"
+</style>

@@ -1,41 +1,59 @@
 <template>
   <div id="app">
-
     <header-app>
-      <button-mode>
-        <template v-slot:text>DARK</template>
-        <template v-slot:icon><IconMoon /></template>
-      </button-mode>
+      <ButtonMode 
+        @changeModel="toggleDarkMode" :darkMode="darkMode"
+      />
     </header-app>
     <main>
-      <SearchBar />
-      <CardInformation />
+      <SearchBar @dataUser="dataUserArray"/>
+      <CardInformation :data="dataUser"/>
     </main>
-
   </div>
 </template>
 
 <script>
-import ButtonMode from './components/ButtonMode.vue'
-import CardInformation from './components/CardInformation.vue'
-import HeaderApp from './components/HeaderApp.vue'
-import SearchBar from './components/SearchBar.vue'
-import IconMoon from './icon/IconMoon.vue'
+import ButtonMode from "./components/ButtonMode.vue";
+import CardInformation from "./components/CardInformation.vue";
+import HeaderApp from "./components/HeaderApp.vue";
+import SearchBar from "./components/SearchBar.vue";
 
 export default {
-  name: 'App',
+  name: "App",
+
   components: {
     HeaderApp,
     ButtonMode,
-    IconMoon,
     SearchBar,
-    CardInformation
+    CardInformation,
   },
+
+  data(){
+    return {
+      darkMode: false,
+      dataUser: {},
+    }
+  },
+
+  methods: {
+    toggleDarkMode() {
+      if(this.darkMode){
+        document.body.classList.remove("dark");
+      } else {
+        document.body.classList.add("dark");
+      }
+      this.darkMode = !this.darkMode;
+    },
+
+    dataUserArray(dataUser) {
+      this.dataUser =  dataUser
+    },
+  }
 }
 </script>
 
 <style lang="scss">
-  @use '@/styles/_global.scss' as *;
+  @use "@/styles/_global.scss" as *;
 
   * {
     box-sizing: border-box;
