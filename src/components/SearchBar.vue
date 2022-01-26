@@ -1,9 +1,9 @@
 <template>
-  <form @submit="sudmitUser" class="searchBar">
+  <form @submit="sudmitUserName" class="searchBar">
     <div class="searchBar__container" :class="error ? 'error' : ''">
       <span class="searchBar__icon"></span>
       <input
-        v-model="user"
+        v-model="userName"
         class="searchBar__input"
         type="text"
         placeholder="Search GitHub username…"
@@ -16,44 +16,32 @@
 </template>
 
 <script>
-import api from "../Api.js";
-
 export default {
   name: "SearchBar",
 
+  props: {
+    error: {
+      type: Boolean,
+      default: false,
+    }
+  },
+
   data() {
     return {
-      user: "",
-      error: false,
+      userName: "",
     };
   },
 
-  created() {
-    this.searchUser("octocat");
-  },
-
   methods: {
-    sudmitUser() {
+    sudmitUserName() {
       event.preventDefault();
-      this.error = false;
+      this.$emit('errorInput', false)
       if (this.user === "") {
-        return (this.error = true);
+        this.$emit('errorInput', true)
+        return
       }
-      this.searchUser(this.user);
-    },
-
-    searchUser(user) {
-      api
-        .getDataUser(String(user))
-        .then((dataUser) => {
-          if (dataUser.message) {
-            this.error = true;
-          } else {
-            this.$emit("dataUser", dataUser);
-          }
-        })
-        .catch(() => (this.error = true))
-        .finally(() => (this.user = ""));
+      this.$emit("userName", this.userName);
+      this.userName = "";
     },
   },
 };

@@ -4,7 +4,7 @@
       <ButtonMode @changeModel="toggleDarkMode" :darkMode="darkMode" />
     </header-app>
     <main>
-      <SearchBar @dataUser="dataUserArray" />
+      <SearchBar @userName="userNameSearch" @errorInput="toggleError" :error ="error"/>
       <CardInformation :data="dataUser" />
     </main>
   </div>
@@ -15,6 +15,8 @@ import ButtonMode from "./components/ButtonMode.vue";
 import CardInformation from "./components/CardInformation.vue";
 import HeaderApp from "./components/HeaderApp.vue";
 import SearchBar from "./components/SearchBar.vue";
+
+import api from "./Api.js";
 
 export default {
   name: "App",
@@ -28,8 +30,9 @@ export default {
 
   data() {
     return {
-      darkMode: false,
       dataUser: {},
+      error: false,
+      darkMode: false,
     };
   },
 
@@ -45,16 +48,35 @@ export default {
 
   created() {
     this.darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    this.searchUser("octocat");
   },
 
   methods: {
+    searchUser(user) {
+      api
+        .getDataUser(String(user))
+        .then((dataUser) => {
+          if (dataUser.message) {
+            this.error = true;
+          } else {
+            this.dataUser = dataUser;
+          }
+        })
+        .catch(() => (this.error = true));
+    },
+
+    userNameSearch(userName){
+      this.searchUser(userName)
+    },
+
     toggleDarkMode() {
       this.darkMode = !this.darkMode;
     },
 
-    dataUserArray(dataUser) {
-      this.dataUser = dataUser;
-    },
+    toggleError(boolean) {
+      this.error = boolean;
+    }
+
   },
 };
 </script>
