@@ -34,14 +34,21 @@ export default {
       dataUser: {},
     }
   },
-
+  created(){
+    this.darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  },
+  watch: {
+    darkMode(newValue){
+      console.log('cambio')
+      if(newValue){
+        document.body.classList.add("dark");
+      } else {
+        document.body.classList.remove("dark");
+      }
+    }
+  },
   methods: {
     toggleDarkMode() {
-      if(this.darkMode){
-        document.body.classList.remove("dark");
-      } else {
-        document.body.classList.add("dark");
-      }
       this.darkMode = !this.darkMode;
     },
 

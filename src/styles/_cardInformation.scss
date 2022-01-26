@@ -71,6 +71,9 @@
     font-weight: 400;
     line-height: 25px;
     text-align: start;
+    &.opasity {
+      opacity: 0.75;
+    }
   }
 
   &__statistic {

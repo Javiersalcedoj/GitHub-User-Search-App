@@ -8,7 +8,7 @@
     {{darkMode ? 'LIGHT' : 'DARK'}}
     <span class="buttonMode__icon">
       <IconSun 
-         v-show="darkMode"
+        v-show="darkMode"
         :buttonHover="buttonHover"
       />
       <IconMoon 

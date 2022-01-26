@@ -7,8 +7,8 @@
       <p class="information__joined">{{joined}}</p>
     </div>
     
-    <p class="information__description">
-      {{this.data.bio ? this.data.bio : 'This profile has no bio'}}
+    <p class="information__description" :class="{'opasity': data.bio === null}">
+      {{data.bio ? data.bio : 'This profile has no bio'}}
     </p>
 
     <div class="information__statistic">

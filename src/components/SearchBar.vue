@@ -3,7 +3,7 @@
     @submit="sudmitUser"
     class="searchBar"
   >
-    <div class="searchBar__container error">
+    <div class="searchBar__container">
       <span
         class="searchBar__icon"
         :class="error ? 'error' : ''"

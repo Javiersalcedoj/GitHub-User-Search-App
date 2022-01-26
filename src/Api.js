@@ -1,4 +1,4 @@
-const URL = 'https://api.github.com/users';
+export const URL = process.env.VUE_APP_API;
 
 function getDataUser (user) {
   return fetch(`${URL}/${user}`)
